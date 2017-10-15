@@ -12,20 +12,20 @@ namespace HycCaculator
 {
     public partial class MainWin : Form
     {
-        private combine<double> funcBuffer;
+        private combine<double, double> funcBuffer;
         private double numBuffer = 0;
         bool hasDot = false;
         bool inputComplete = false;
 
         // 表示二元谓词
-        private delegate double combine<T>(T a, T b);
+        private delegate T2 combine<T1, T2>(T1 a, T1 b);
 
         //将操作符的名称映射到相应的函数
-        private static Dictionary<char, combine<double>> operatorDict;
+        private static Dictionary<char, combine<double, double>> operatorDict;
 
         static MainWin()
         {
-            operatorDict = new Dictionary<char, combine<double>>();
+            operatorDict = new Dictionary<char, combine<double, double>>();
             operatorDict['+'] = (a, b) => a + b;
             operatorDict['-'] = (a, b) => a - b;
             operatorDict['×'] = (a, b) => a * b;
